@@ -24,11 +24,18 @@
     "@swc/core": "^1.5.5",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.12.11",
-    "esbuild-plugin-replace": "^1.4.0",
-    "esbuild-plugin-umd-wrapper": "^3.0.0",
     "prettier": "^3.3.3",
     "tsup": "^8.2.4",
-    "typescript": "^4.9.5"
+    "typescript": "^5.4.0",
+    "vite": "^5.2.8"
+  },
+  "peerDependencies": {
+    "vite": ">=4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "vite": {
+      "optional": true
+    }
   },
   "publishConfig": {
     "access": "public",
@@ -36,8 +43,9 @@
   },
   "homepage": "https://js.work",
   "keywords": [
-    "uniapp-kits",
-    "number",
-    "num"
+    "uniapp",
+    "vite-plugin",
+    "tanstack-query",
+    "kits"
   ]
 }

@@ -12,11 +12,20 @@ yarn add @jswork/uniapp-kits
 
 ## usage
 ```js
-import tsupLibrary from '@jswork/uniapp-kits';
+// vite.config.ts
+import { fixUniPreserveSymlinks } from '@jswork/uniapp-kits';
 
-tsupLibrary(1024);
+export default {
+  plugins: [fixUniPreserveSymlinks()]
+};
+```
 
-// [1000, 0, 20, 4]
+```js
+// query-client setup
+import { onlineManager } from '@tanstack/vue-query';
+import { setupUniOnlineManager } from '@jswork/uniapp-kits';
+
+setupUniOnlineManager(onlineManager);
 ```
 
 ## license

@@ -1,5 +1,4 @@
 import { fixUniPreserveSymlinks } from '../src';
-import type { Plugin } from 'vite';
 
 describe('Normal test cases', () => {
   test('plugin name and enforce', () => {

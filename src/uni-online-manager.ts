@@ -1,13 +1,14 @@
-export type SetOnline = (online?: boolean) => void;
+export type SetOnline = (online: boolean) => void;
 
 export interface OnlineManagerLike {
-  setEventListener: (setup: (setOnline: SetOnline) => (() => void) | void) => void;
+  setEventListener: (setup: (setOnline: SetOnline) => (() => void) | undefined) => void;
 }
 
 interface UniNetworkApi {
   getNetworkType(opts: { success: (res: { networkType: string }) => void }): void;
   onNetworkStatusChange(cb: (res: { isConnected: boolean }) => void): void;
-  offNetworkStatusChange(cb: (res: { isConnected: boolean }) => void): void;
+  // 旧基础库只有 on 没有 off，故声明为可选
+  offNetworkStatusChange?(cb: (res: { isConnected: boolean }) => void): void;
 }
 
 export function setupUniOnlineManager(onlineManager: OnlineManagerLike): boolean {
@@ -25,7 +26,8 @@ export function setupUniOnlineManager(onlineManager: OnlineManagerLike): boolean
     };
     uni.onNetworkStatusChange(onStatusChange);
     return () => {
-      uni.offNetworkStatusChange(onStatusChange);
+      typeof uni.offNetworkStatusChange === 'function' &&
+        uni.offNetworkStatusChange(onStatusChange);
     };
   });
 

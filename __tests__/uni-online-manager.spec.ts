@@ -1,8 +1,14 @@
-import { setupUniOnlineManager, OnlineManagerLike, SetOnline } from '../src';
+import { setupUniOnlineManager } from '../src';
+import type { OnlineManagerLike, SetOnline } from '../src';
+import { onlineManager } from '@tanstack/query-core';
 
 describe('Normal test cases', () => {
   afterEach(() => {
     delete (globalThis as any).uni;
+  });
+
+  test('accepts the real tanstack onlineManager without a cast', () => {
+    expect(setupUniOnlineManager(onlineManager)).toBe(false);
   });
 
   test('returns false and never calls setEventListener when uni is absent', () => {
@@ -38,7 +44,7 @@ describe('Normal test cases', () => {
       }
     };
 
-    let setupFn: ((setOnline: SetOnline) => (() => void) | void) | undefined;
+    let setupFn: ((setOnline: SetOnline) => (() => void) | undefined) | undefined;
     const onlineManager: OnlineManagerLike = {
       setEventListener(fn) {
         setupFn = fn;

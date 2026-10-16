@@ -1,6 +1,6 @@
 {
   "name": "@jswork/uniapp-kits",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Custom Vite plugins and fixes for UniApp project development.",
   "npmClient": "pnpm",
   "main": "dist/index.cjs.js",

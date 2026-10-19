@@ -1,7 +1,7 @@
-export type SetOnline = (online: boolean) => void;
+export type SetOnline = (online?: boolean) => void;
 
 export interface OnlineManagerLike {
-  setEventListener: (setup: (setOnline: SetOnline) => (() => void) | undefined) => void;
+  setEventListener: (setup: (setOnline: SetOnline) => (() => void) | void) => void;
 }
 
 interface UniNetworkApi {

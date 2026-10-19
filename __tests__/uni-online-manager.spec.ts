@@ -44,7 +44,7 @@ describe('Normal test cases', () => {
       }
     };
 
-    let setupFn: ((setOnline: SetOnline) => (() => void) | undefined) | undefined;
+    let setupFn: ((setOnline: SetOnline) => (() => void) | void) | undefined;
     const onlineManager: OnlineManagerLike = {
       setEventListener(fn) {
         setupFn = fn;
